@@ -26,7 +26,7 @@
 				<li><a href="#"><i class="fa fa-wrench fa-fw"></i> 
 						<span class="fa arrow"></span></a>
 					<ul class="nav nav-second-level">
-						<li><a href=""></a></li>
+						<li><a href="${pageContext.request.contextPath}/test">${t['link.test.title']}</a></li>
 						<li><a href=""></a></li>
 					</ul> <!-- /.nav-second-level --></li>
 				<li><a href="#"><i class="fa fa-sitemap fa-fw"></i>

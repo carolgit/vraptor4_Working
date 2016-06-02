@@ -14,19 +14,38 @@ import br.com.caelum.vraptor.Result;
 public class IndexController {
 	@Inject
 	private Result result;
+
 	@Get("/")
 	public void index() {
-		home();
+		System.out.println(result.included().get("page"));
+		System.out.println(result.included().toString());
+		if (result.included().get("page") == null) {
+			home();
+		}
 	}
+
 	@Get("/home")
 	public void home() {
-		Date date = new Date();
-		Calendar calendar = new GregorianCalendar();
-		calendar.setTime(date);
+		Calendar calendar = currentDate();
 		result.include("date", calendar);
 		result.include("meuNumero", 12);
 		result.include("page_header_title", "page.header.title.home");
-		result.include("page","home.jsp");
-		result.include("folder","index");
+		result.include("page", "home.jsp");
+		result.include("folder", "index");
+	}
+
+	private Calendar currentDate() {
+		Date date = new Date();
+		Calendar calendar = new GregorianCalendar();
+		calendar.setTime(date);
+		return calendar;
+	}
+
+	@Get("/test")
+	public void other() {
+		result.include("page_header_title", "page.header.title.test");
+		result.include("page", "other.jsp");
+		result.include("folder", "index");
+		result.redirectTo(this).index();
 	}
 }
