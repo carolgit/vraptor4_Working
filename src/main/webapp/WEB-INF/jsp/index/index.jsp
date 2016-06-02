@@ -53,7 +53,7 @@
 <body>
 	<div id="wrapper">
 		<%@include file='/WEB-INF/template/header.jsp'%>
-	<%-- 	<jsp:include page='/WEB-INF/jsp/${param.content}' /> --%>
+		<jsp:include page='/WEB-INF/jsp/${folder}/${page}' />
 		<%@include file='/WEB-INF/template/footer.jsp'%></td>
 	</div>
 

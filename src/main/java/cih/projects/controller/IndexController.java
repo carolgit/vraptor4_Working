@@ -16,13 +16,17 @@ public class IndexController {
 	private Result result;
 	@Get("/")
 	public void index() {
+		home();
+	}
+	@Get("/home")
+	public void home() {
 		Date date = new Date();
 		Calendar calendar = new GregorianCalendar();
 		calendar.setTime(date);
 		result.include("date", calendar);
 		result.include("meuNumero", 12);
-	}
-	@Get("/home")
-	public void home() {
+		result.include("page_header_title", "page.header.title.home");
+		result.include("page","home.jsp");
+		result.include("folder","index");
 	}
 }
