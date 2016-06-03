@@ -1,5 +1,6 @@
 package cih.projects.dao;
 
+import javax.enterprise.context.RequestScoped;
 import javax.transaction.SystemException;
 import javax.transaction.Transaction;
 
@@ -7,12 +8,23 @@ import org.hibernate.Criteria;
 import org.hibernate.Session;
 
 import antlr.collections.List;
+
 import org.hibernate.stat.SessionStatistics;
 
-
+@RequestScoped
 public class GenericDao {
-	private static Session session;
+	private Session session;	
 	private Transaction transaction;
+	
+	public GenericDao(Session session) {
+		super();
+		this.session = session;
+	}
+	
+	public Session getSession() {
+		return session;
+	}
+	
 	public void objInsert(Object obj)throws Exception{
 		session = HibernateUtil.getSession();
 		transaction = (Transaction) session.beginTransaction();

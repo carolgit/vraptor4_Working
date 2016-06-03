@@ -7,13 +7,19 @@ import javax.enterprise.context.RequestScoped;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 
+import cih.projects.dao.GenericDao;
+import cih.projects.dao.HibernateUtil;
 import cih.projects.model.entity.User;
 
 @RequestScoped
-public class UserRepository {
-	private Session session;
+public class UserRepository extends GenericDao{
+	
+	public UserRepository(Session session) {
+		super(session);
+	}
+
 	private Criteria createCriteria(){
-		return session.createCriteria(User.class);
+		return HibernateUtil.getSession().createCriteria(User.class);
 	}
 	
 	@SuppressWarnings("unchecked")

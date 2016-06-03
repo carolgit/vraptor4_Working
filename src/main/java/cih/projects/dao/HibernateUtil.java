@@ -1,10 +1,13 @@
 package cih.projects.dao;
 
+import javax.enterprise.context.RequestScoped;
+
 import org.hibernate.MappingException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AnnotationConfiguration;
 
+@RequestScoped
 public class HibernateUtil {
 	private static SessionFactory sessionFactory;
 	@SuppressWarnings("deprecation")
