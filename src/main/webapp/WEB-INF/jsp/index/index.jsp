@@ -80,5 +80,21 @@
 	<!-- Custom Theme JavaScript -->
 	<script src="${pageContext.request.contextPath}/dist/js/sb-admin-2.js"></script>
 
+<%-- 	<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.12.2.min.js"></script> --%>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.i18n.properties.min.js"></script>
+	<script type="text/javascript">
+	$.i18n.properties({
+	    name:'messages', 
+	    path:'js/', 
+	    mode:'both',
+	    language:'pt_BR',
+// 	    checkAvailableLanguages: true,
+	    async: true,
+	    callback: function() {
+	    	console.log(geoserver('test'));
+	    }
+	});
+	
+	</script>
 </body>
 </html>
